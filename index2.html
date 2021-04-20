@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+    <title>Project X</title>
+  </head>
+  <body>
+    <div class="screen-center">
+      <form>
+        <div class="segment">
+          <h1>Practical Assignment 1</h1>
+        </div>
+        <label>
+          <input id = "inp1" type="text" value = "" placeholder="Block Size" />
+        </label>
+        <label>
+          <input id = "inp1" type="text" value = "" placeholder="Number of Rounds" />
+        </label>
+        <label>
+          <input id = "inp1" type="text" value = "" placeholder="Key" />
+        </label>
+        <label>
+          <textarea id = "inp1" type="text" value = "" placeholder="PlainText" onkeyup="checkInput(this);"></textarea>
+        </label>
+        <label>
+          <textarea id = "inp2" type="text" placeholder="CipherText" onkeyup="checkInput(this);"></textarea>
+        </label>
+        <button class="red" type="button" onClick='swapFunc();'><i class="icon ion-md-lock"></i>Swap</button>
+      </form>
+      </div>
+
+  </body>
+</html>

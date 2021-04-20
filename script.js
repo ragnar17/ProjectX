@@ -1,20 +1,31 @@
 
 var is_swapped = 0
+
 function func(txt){
   var obj = document.getElementById("inp1");
-  var xhr = new XMLHttpRequest();
-  var url = "http://ragnar177.pythonanywhere.com/pa0";
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          var json = JSON.parse(xhr.responseText);
-          var s = document.getElementById("inp2");
-          s.value = json.cipher;
-      }
-  };
-  var data = JSON.stringify({"plainText": obj.value});
-  xhr.send(data);
+  str = obj.value;
+  res = ""
+  for( i=0;i<str.length;i++)
+  {
+    var j = str.charCodeAt(i);
+    if( j>=65 && j<=90)
+    {
+      var tmp = (25 - j+ "A".charCodeAt(0))%26
+      tmp = (tmp+26)%26
+      res += String.fromCharCode("A".charCodeAt(0) + tmp)
+    }
+    else if( j>=97 && j<=122)
+    {
+      var tmp = (25 - j+ "a".charCodeAt(0))%26
+      tmp = (tmp+26)%26
+      res += String.fromCharCode("a".charCodeAt(0) + tmp)
+    }
+    else {
+      res += str[i]
+    }
+    var s = document.getElementById("inp2");
+    s.value = res;
+  }
 }
 function checkInput(obj) {
   func(obj.value)
