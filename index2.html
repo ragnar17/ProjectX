@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="des.js"></script>
     <title>Project X</title>
   </head>
   <body>
@@ -12,22 +12,41 @@
         <div class="segment">
           <h1>Practical Assignment 1</h1>
         </div>
-        <label>
-          <input id = "inp1" type="text" value = "" placeholder="Block Size" />
-        </label>
-        <label>
-          <input id = "inp1" type="text" value = "" placeholder="Number of Rounds" />
-        </label>
-        <label>
-          <input id = "inp1" type="text" value = "" placeholder="Key" />
-        </label>
-        <label>
-          <textarea id = "inp1" type="text" value = "" placeholder="PlainText" onkeyup="checkInput(this);"></textarea>
-        </label>
-        <label>
-          <textarea id = "inp2" type="text" placeholder="CipherText" onkeyup="checkInput(this);"></textarea>
-        </label>
-        <button class="red" type="button" onClick='swapFunc();'><i class="icon ion-md-lock"></i>Swap</button>
+        <ul class = "list-block">
+          <li>
+            <label>
+              <input id = "block-size-input" type="number" value = "16" placeholder="Block Size" onchange="checkBlockSize(this);" />
+            </label>
+          </li>
+          <li>
+            <label>
+              <input id = "rounds-input" type="number" value = "1" placeholder="Number of Rounds" onchange="checkRounds(this);" />
+            </label>
+          </li>
+          <li>
+            <button class="red" type="button" onClick="runGenerateBoxes();"><i class="icon ion-md-lock"></i>Generate Boxes</button>
+          </li>
+          <li>
+            <label>
+              <input id = "key-input" type="text" value = "" placeholder="Key" onchange="runGenerateKeys(this);" />
+            </label>
+          </li>
+
+          </ul>
+          <ul>
+          <li>
+            <label>
+              <textarea id = "inp1" type="text" value = "" placeholder="PlainText" onchange="runDEA(this);"></textarea>
+            </label>
+          </li>
+          <li>
+            <label>
+              <textarea id = "inp2" type="text" placeholder="CipherText" readonly ></textarea>
+            </label>
+          </li>
+        </ul>
+        <button class="red" type="button" onClick="swapFunc();"><i class="icon ion-md-lock"></i>Swap</button>
+        <button class="red" type="button" onClick="copyOutputFunc();"><i class="icon ion-md-lock"></i>Copy Output</button>
       </form>
       </div>
 
