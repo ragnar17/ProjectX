@@ -5,6 +5,8 @@ function func(txt){
   var obj = document.getElementById("inp1");
   str = obj.value;
   res = ""
+  if(str.length==0)
+    document.getElementById("inp2").value = "";
   for( i=0;i<str.length;i++)
   {
     var j = str.charCodeAt(i);
