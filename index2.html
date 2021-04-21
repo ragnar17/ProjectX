@@ -23,12 +23,12 @@
               <input id = "rounds-input" type="number" value = "1" placeholder="Number of Rounds" onchange="checkRounds(this);" />
             </label>
           </li>
-          <li>
+          <!-- <li>
             <button class="red" type="button" onClick="runGenerateBoxes();"><i class="icon ion-md-lock"></i>Generate Boxes</button>
-          </li>
+          </li> -->
           <li>
             <label>
-              <input id = "key-input" type="text" value = "" placeholder="Key" onchange="runGenerateKeys(this);" />
+              <input id = "key-input" type="text" value = "" placeholder="Key"  />
             </label>
           </li>
 
@@ -36,7 +36,7 @@
           <ul>
           <li>
             <label>
-              <textarea id = "inp1" type="text" value = "" placeholder="PlainText" onchange="runDEA(this);"></textarea>
+              <textarea id = "inp1" type="text" value = "" placeholder="PlainText"></textarea>
             </label>
           </li>
           <li>
@@ -45,6 +45,7 @@
             </label>
           </li>
         </ul>
+        <button id = "encryptbtn" class="red" type="button" onClick="runDEA(this);">Encrypt</button>
         <button class="red" type="button" onClick="swapFunc();"><i class="icon ion-md-lock"></i>Swap</button>
         <button class="red" type="button" onClick="copyOutputFunc();"><i class="icon ion-md-lock"></i>Copy Output</button>
       </form>

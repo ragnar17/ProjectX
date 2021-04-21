@@ -7,6 +7,8 @@ var block_list_i = 0
 var roundKeys = []
 var revRoundKeys = []
 var mode = 1
+var rounds = -1
+var prevKey = ""
 //// UI Things ////
 
 function copyOutputFunc(){
@@ -43,14 +45,29 @@ function runGenerateKeys(obj){
     return
   if(key.length >= 8)
   {
+    roundKeys = []
+    revRoundKeys = []
     generateKeys(key,rounds,block_size)
   }
 }
 
 function runDEA(obj)
 {
-  if(roundKeys.length==0 || P.length==0)
-    return
+
+  if(block_size != document.getElementById("block-size-input").value || rounds != document.getElementById("rounds-input").value)
+  {
+    block_size = document.getElementById("block-size-input").value
+    rounds = document.getElementById("rounds-input").value
+    roundKeys = []
+    revRoundKeys = []
+    generateBoxes(block_size,7)
+    key = document.getElementById("key-input").value
+    generateKeys(key,rounds,block_size)
+    prevKey = key
+  }
+  if(prevKey != document.getElementById("key-input").value )
+    generateKeys(key,rounds,block_size)
+  if(document.getElementById("inp1").value)
   var txt = document.getElementById("inp1").value
   block_size = document.getElementById("block-size-input").value
   rounds = document.getElementById("rounds-input").value
@@ -95,12 +112,14 @@ function swapFunc(){
     document.getElementById("inp2").placeholder = "Plain Text";
     document.getElementById("inp1").value = "";
     document.getElementById("inp2").value = "";
+    document.getElementById("encryptbtn").innerHTML = "Decrypt";
   }
   else{
     document.getElementById("inp1").placeholder = "Plain Text";
     document.getElementById("inp2").placeholder = "Cipher Text";
     document.getElementById("inp1").value = "";
     document.getElementById("inp2").value = "";
+    document.getElementById("encryptbtn").innerHTML = "Encrypt";
   }
   mode ^= 1
 }
@@ -293,6 +312,7 @@ function generateKeys(key,rounds,key_size){
   roundKeys = []
   if(key.length < key_size/8)
     alert("Key should be atleast 8 characters long.")
+
   var tmp = ""
   for(var i=0;i<8;i++)
     tmp += key[i]
